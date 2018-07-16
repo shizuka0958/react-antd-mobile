@@ -149,7 +149,11 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+              'plugins': [['import', {
+                    libraryName: 'antd-mobile',
+                    //style: 'css',
+                    style: true, // use less for customized theme
+              }]],
               compact: true,
             },
           },
@@ -166,7 +170,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.(css|less)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -205,6 +209,13 @@ module.exports = {
                         ],
                       },
                     },
+                    {
+                        loader: require.resolve('less-loader'),
+                        options: {
+                          // theme vars, also can use theme.js instead of this.
+                          modifyVars: { "@brand-primary": "#000" },
+                        },
+                    },
                   ],
                 },
                 extractTextPluginOptions
@@ -222,7 +233,7 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.less$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
