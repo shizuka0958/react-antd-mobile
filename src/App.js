@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Icon } from 'antd-mobile';
-import logo from './logo.svg';
+import logo from './assets/img/logo.svg';
 
 import './App.css';
-import './Appless.less'
-
+import './Appless.less';
 
 class App extends Component {
   render() {
