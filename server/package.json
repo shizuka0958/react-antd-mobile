@@ -1,0 +1,15 @@
+{
+  "name": "react-antd-mobile-server",
+  "version": "1.0.0",
+  "description": "server for test",
+  "main": "main.js",
+  "scripts": {
+    "start":  "node main.js"
+  },
+  "license": "UNLICENSED",
+  "author": "Moca",
+  "dependencies": {
+    "express": "4.x",
+    "ip": "1.1.5"
+  }
+}
