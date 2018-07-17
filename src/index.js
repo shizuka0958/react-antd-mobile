@@ -8,14 +8,14 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <HashRouter>
         <div>
-            <Route  path="/App" loadComponent={(cb) => {
-                    import('./App').then((module) => {
+            <Route  path="/app" loadComponent={(cb) => {
+                    import('./App.js').then((module) => {
                         const app = module.default;
                         cb(app);
                     })
                 } }/>
 
-             <Route index path="/Login" loadComponent={(cb) => {
+             <Route index path="/login" loadComponent={(cb) => {
                     import('./views/login/').then(({view}) => {
                         cb(view);
                     })
