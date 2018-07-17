@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Button, Icon } from 'antd-mobile';
 import logo from './assets/img/logo.svg';
 
-import './App.css';
-import './Appless.less';
+import './App.less';
+
 
 class App extends Component {
   render() {

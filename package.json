@@ -51,7 +51,8 @@
   "devDependencies": {
     "babel-plugin-import": "^1.2.0",
     "less": "^2.7.3",
-    "less-loader": "^4.0.5"
+    "less-loader": "^4.0.5",
+    "react-keeper": "^2.1.8"
   },
   "jest": {
     "collectCoverageFrom": [
