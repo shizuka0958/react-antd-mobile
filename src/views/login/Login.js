@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux"
 import { Button } from 'antd-mobile'
 import $ from 'jquery'
 
@@ -40,6 +41,8 @@ class Login extends Component {
         return (
             <div className="Login">
                 <Button type="primary" onClick={this.onLoginClick.bind(this)}>Login</Button>
+                <div>user is {this.props.user}</div>
+                <div> shop is {this.props.shop}</div>
                 <ul>
                     {
                         this.state.items.map(item => (
@@ -51,4 +54,21 @@ class Login extends Component {
         );
     }
 }
-export default Login;
+
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        shop: state.shop
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        // onSetEmployeeModifyPopupInfo: (info) => { dispatch(Actions.setEmployeeModifyPopupInfo(info)); },
+        // onTogglePopup: (visible, mask) => { dispatch(Actions.toggleEmployeeModifyPopup(visible, mask)) }
+    };
+};
+
+// Which props to inject from the global atomic state
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
