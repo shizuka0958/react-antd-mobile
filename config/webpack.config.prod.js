@@ -213,7 +213,7 @@ module.exports = {
                         loader: require.resolve('less-loader'),
                         options: {
                           // theme vars, also can use theme.js instead of this.
-                          modifyVars: { "@brand-primary": "#000" },
+                        //   modifyVars: { "@brand-primary": "#000" },
                         },
                     },
                   ],

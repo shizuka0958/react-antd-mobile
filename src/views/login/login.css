@@ -1,0 +1,15 @@
+#login-btn-group>.btn:first-child {
+    margin-top: 1rem;
+    width: 40%;
+}
+
+#login-btn-group>.btn:last-child {
+    margin-top: 1rem;
+    width: 45%;
+}
+
+#login-btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

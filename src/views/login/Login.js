@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { Button } from 'antd-mobile'
+import { Control } from 'react-keeper'
+import { Button,InputItem} from 'antd-mobile'
 import $ from 'jquery'
+import './login.css'
 
 class Login extends Component {
     constructor(props) {
@@ -16,7 +18,7 @@ class Login extends Component {
 
     }
 
-    onLoginClick = () => {
+    onGetCodeClick = () => {
         const _this = this;
         $.ajax({
             type: "get",
@@ -37,19 +39,44 @@ class Login extends Component {
         });
     }
 
+    onLoginClick = () => {
+        Control.go('/app');
+    }
+
     render() {
         return (
-            <div className="Login">
-                <Button type="primary" onClick={this.onLoginClick.bind(this)}>Login</Button>
-                <div>user is {this.props.user}</div>
-                <div> shop is {this.props.shop}</div>
-                <ul>
-                    {
-                        this.state.items.map(item => (
-                            (<li key={item.id}>{item.title}</li>)
-                        ))
-                    }
-                </ul>
+            <div className="Login" style={{ 'background': '#f8f8f8' }}>
+                <div style={{ marginTop: '1rem' }}>
+                    <InputItem type='phone' clear placeholder="请输入手机号">
+                        {/* <div style={{ backgroundImage: 'url(https://zos.alipayobjects.com/rmsportal/DfkJHaJGgMghpXdqNaKF.png)', backgroundSize: 'cover', height: '22px', width: '22px' }} /> */}
+                        手机号
+                    </InputItem>
+
+                    <InputItem type='number' clear placeholder="请输入短信验证码">
+                        验证码
+                    </InputItem>
+
+                </div>
+
+                <div id='login-btn-group' >
+                    <Button className='btn' type='primary' onClick={this.onGetCodeClick.bind(this)}>获取验证码</Button>
+                    <Button className='btn' type='primary' onClick={this.onLoginClick.bind(this)}>立即登录</Button>
+                </div>
+
+                
+
+                <div style={{ marginTop: '3rem' }}>
+                    <div>以下是测试数据</div>
+                    <div>user is {this.props.user}</div>
+                    <div> shop is {this.props.shop}</div>
+                    <ul>
+                        {
+                            this.state.items.map(item => (
+                                (<li key={item.id}>{item.title}</li>)
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
         );
     }
