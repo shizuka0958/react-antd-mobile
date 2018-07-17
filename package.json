@@ -52,7 +52,8 @@
     "babel-plugin-import": "^1.2.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "react-keeper": "^2.1.8"
+    "react-keeper": "^2.1.8",
+    "jquery": "^3.3.1"
   },
   "jest": {
     "collectCoverageFrom": [
