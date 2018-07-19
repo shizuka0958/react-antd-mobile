@@ -1,3 +1,6 @@
+.Login{
+    padding: 1rem;
+}
 #login-btn-group>.btn:first-child {
     margin-top: 1rem;
     width: 40%;

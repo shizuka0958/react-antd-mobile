@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { Control } from 'react-keeper'
-import { Button,InputItem} from 'antd-mobile'
+import { Button, InputItem } from 'antd-mobile'
 import $ from 'jquery'
 import './login.css'
 
@@ -19,24 +19,35 @@ class Login extends Component {
     }
 
     onGetCodeClick = () => {
+        console.log('onGetCodeClick enter');
         const _this = this;
-        $.ajax({
-            type: "get",
-            url: "http://apis.juhe.cn/cook/query?key=dd64a7d8a30f6bccb0589d233f2f7861&rn=5&pn=0&menu=2",
-            dataType: "jsonp",
-            success: function (data) {
-                console.log(data);
-                _this.setState({
-                    items: data.result.data
-                });
-            },
-            error: function () {
+        new Promise((resolve, rejects) => {
+           
+            $.ajax({
+                type: "get",
+                url: "http://apis.juhe.cn/cook/query?key=dd64a7d8a30f6bccb0589d233f2f7861&rn=5&pn=0&menu=2",
+                dataType: "jsonp",
+                success: function (data) {
+                    console.log('sucess data');
+                    resolve(data.result.data);
+                },
+                error: function () {
+                    rejects('errpr')
+                },
+                beforeSend: function () {
 
-            },
-            beforeSend: function () {
-
-            }
+                }
+            });
+        }).then((data)=>{
+            console.log('then data');
+            _this.setState({
+                items: data
+            });
+        }).catch((err)=>{
+            console.log(err);
         });
+        console.log('onGetCodeClick leave');
+
     }
 
     onLoginClick = () => {
@@ -63,7 +74,7 @@ class Login extends Component {
                     <Button className='btn' type='primary' onClick={this.onLoginClick.bind(this)}>立即登录</Button>
                 </div>
 
-                
+
 
                 <div style={{ marginTop: '3rem' }}>
                     <div>以下是测试数据</div>
